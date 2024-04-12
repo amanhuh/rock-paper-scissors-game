@@ -1,8 +1,8 @@
-.config
-node_modules
+node_modules/
 .git
-tailwind
+.tailwind
 package-lock.json
 .replit
 replit.nix
 .upm
+.config
