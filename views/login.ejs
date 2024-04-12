@@ -1,0 +1,9 @@
+<%- await include("templates/navbar", { title: 'Rock Paper Scissor'}) %>
+    <div class="mx-3 mt-20 md:mt-28 bg-sky-700 h-[87vh] md:h-[81vh] rounded-xl">
+      <div class="h-full p-3 md:p-6 flex items-center place-content-center justify-center relative">
+        <div class="w-full md:w-[30%] lg:w-[25%] rounded-lg px-2">
+          <button class="w-full rounded-md py-1 md:p-2 bg-gray-100 drop-shadow-md font-bold font-main mb-2 md:mb-3" onclick="window.location.href='/auth/google'">GOOGLE</button>
+          <button class="w-full rounded-md py-1 md:p-2 bg-[#5865F2] drop-shadow-md font-bold font-main text-gray-100" onclick="window.location.href='/auth/discord'">DISCORD</button>
+        </div>
+      </div>
+    </div>

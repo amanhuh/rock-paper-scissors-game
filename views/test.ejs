@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function(){
+  var x = $("#image").position().left;
+  var y = $("#image").position().top;
+  var ySpeed = 2;
+  var xSpeed = 2;
+  setInterval(function(){
+    y += ySpeed;
+    x += xSpeed;
+    if(y > $(window).height() && y > $("#image").height()){
+      y = 0;
+      x = 0;
+    }
+    if(y < 0 - $("#image").height() ){
+      ySpeed = 2;
+    }
+    $("#image").css({
+      "left" : x,
+      "top" : y
+    });
+    
+  }, 10);
+});
+
+  </script>
+  <style>
+    #image{
+      position: absolute;
+    }
+    .rotating {
+   animation: rotate 2.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rotate {
+   from { transform: rotate(0deg); }
+   to { transform: rotate(360deg); }
+}
+  </style>
+</head>
+<body>
+  <div class="relative h-44">
+  <img id="image" class="rotating" src="./assets/images/favicon.png">
+  </div>
+</body>
+</html>

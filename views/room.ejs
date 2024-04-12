@@ -1,0 +1,57 @@
+<%- await include("templates/navbar", { title: 'Rock Paper Scissor'}) %>
+  <div class="mx-3 mt-20 md:mt-28 bg-sky-700 h-[87vh] md:h-[81vh] rounded-xl relative">
+    <div class="h-full p-3 md:p-6" id="playGround">
+      <% if (connecting) { %>
+        <p class="text-center font-bold font-main text-gray-100">Connecting...</p>
+      <% } %>
+    </div>
+  </div>
+<script>
+  async function changeRps(btn, newObj) {
+    const el = document.getElementById('chooseRps')
+    if (newObj == 'rock') {
+      el.src = '/assets/images/crock.png'
+      $.ajax({
+        type: 'POST',
+        url: '/battle/choose/<%= room.id %>',
+        data: { choice: 'rock' },
+        dataType: "json",
+        success: function(res) {
+          console.log(res)
+        }
+      })
+    } else if (newObj == 'paper') {
+      el.src = '/assets/images/cpaper.png'
+      $.ajax({
+        type: 'POST',
+        url: '/battle/choose/<%= room.id %>',
+        data: { choice: 'paper' },
+        dataType: "json",
+        success: function(res) {
+          console.log(res)
+        }
+      })
+    } else if (newObj == 'scissor') {
+      el.src = '/assets/images/scissor.png'
+      $.ajax({
+        type: 'POST',
+        url: '/battle/choose/<%= room.id %>',
+        data: { choice: 'scissor' },
+        dataType: "json",
+        success: function(res) {
+          console.log(res)
+        }
+      })
+    }
+    setTimeout(() => {
+      if (el.classList.contains('choosing')) {
+        el.classList.remove('opacity-[0.15]', 'choosing')
+      }
+      if (!el.classList.contains('chosen')) {
+        el.classList.add('chosen')
+      }
+    }, 200)
+  }
+</script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/assets/js/room.js"></script>

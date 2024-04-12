@@ -1,0 +1,8 @@
+<%- await include("templates/navbar", { title: 'Rock Paper Scissor'}) %>
+  <div class="mx-3 mt-20 md:mt-28 bg-sky-700 h-[87vh] md:h-[81vh] rounded-xl">
+    <div class="h-full p-3 md:p-6 flex items-center place-content-center justify-center relative">
+      <p class="text-6xl md:text-8xl absolute text-center text-yellow-400 font-bold font-main drop-shadow-xl opacity-[0.9]">404</p>
+      <p class="font-default text-gray-100 absolute text-center font-medium mt-20 md:mt-32"><%= err %></p>
+      <img src="/assets/images/404.gif" class="opacity-[0.15] w-[35%] md:w-[20%] absolute" draggable="false" />
+    </div>
+  </div>

@@ -1,0 +1,45 @@
+<%- await include("templates/navbar", { title: 'Rock Paper Scissor'}) %>
+  
+  <div class="mb-20 md:mb-0 mt-[16rem] md:mt-0 md:!mt-56 flex px-5 md:px-0 w-full">
+    <div class="md:pl-32 mt-6 md:mt-12 font-main w-full md:w-2/6 mr-auto">
+      <div class="mb-2.5 h-[36px] md:h-[60px]">
+        <p class="text-4xl md:text-6xl text-yellow-300 font-bold drop-shadow-md" id="rpsText">ROCK</p>
+      </div>
+      <div class="inline-block w-full">
+        <p class="text-sm md:text-lg text-gray-50 mb-6">Online rock paper scissor game, create a room or join one to play with your friends!</p>
+        <div class="inline-flex w-full gap-3 flex-wrap">
+          <% if (user) { %>
+            <button class="rounded-md px-3 md:px-5 py-2.5 bg-yellow-300 hover:shadow-xl shadow-sky-700 duration-300 ease-in-out font-bold font-main text-stone-800 text-sm md:text-base w-full md:mx-auto" data-modal-target="createRoomModal" data-modal-toggle="createRoomModal">PLAY</button>
+            <div id="createRoomModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+              <div class="relative w-full h-full max-w-xl h-auto">
+                <div class="relative bg-gray-100 rounded-lg shadow p-4 pt-6">
+                  <div class="md:px-16">
+                    <form action="/room/join" method="post">
+                      <input class="rounded-md font-main font-bold h-12 focus-visible:!outline-0 border-2 border-gray-400 focus-visible:!border-yellow-300 mb-3 mx-auto bg-gray-150 w-full text-gray-900 text-center text-sm md:text-base" placeholder="ROOM ID" id="roomId" name="roomId" required></input>
+                      <button class="rounded-md font-main font-bold w-full py-3 bg-yellow-300 text-sm md:text-base mx-auto" type="submit">JOIN ROOM</button>
+                    </form>
+                  </div>
+                  <div class="flex my-4 relative items-center">
+                    <div class="flex-grow border-t border-gray-400 md:ml-8"></div>
+                    <p class="text-xs font-default text-gray-400 flex-shrink mx-2">OR</p>
+                    <div class="flex-grow border-t border-gray-400 md:mr-8"></div>
+                  </div>
+                  <button class="rounded-md font-main font-bold w-full py-3 bg-sky-400 text-white text-sm md:text-base" onclick="window.location.href='/room/create'">CREATE A ROOM</button>
+                </div>
+              </div>
+            </div>
+          <% } else { %>
+            <button class="rounded-md px-3 md:px-5 py-2.5 bg-yellow-300 hover:shadow-xl shadow-sky-700 duration-300 ease-in-out font-bold font-main text-stone-800 text-sm md:text-base w-full md:mx-auto" onclick="window.location.href='/login'">LOGIN</button>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <div class="md:pr-24 absolute md:relative -mt-24 md:mt-0 right-0 pl-10 md:pl-6 w-[50%] sm:w-[40%] md:w-[30%]">
+      <img src="./assets/images/rock.png" alt="rockImg" id="rockImg" class="w-[64%] drop-shadow-lg rpsImage !opacity-100" />
+      <img src="./assets/images/paper.png" alt="paperImg" id="paperImg" class="w-[64%] drop-shadow-lg rpsImage" />
+      <img src="./assets/images/scissor.png" alt="scissorImg" id="scissorImg" class="w-[64%] drop-shadow-lg rpsImage" />
+    </div>
+  </div>
+  <script src="./assets/js/rpsHero.js"></script>
+</body>
+</html>
